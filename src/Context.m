@@ -13,7 +13,7 @@ void Context_Dummy_Initialize (void *extData, const FREContext ctx, uint32_t *nu
 
    Context* context = [[Context alloc] init];
    [context setFreContext:ctx];
-   FRESetContextNativeData (ctx, (__bridge void *)(context));
+   FRESetContextNativeData (ctx, context);
 }
 
 //====================================================
@@ -208,8 +208,7 @@ void FREObject_SetArrayElement (FREObject array, int index, FREObject element)
 - (void)dealloc {
    [self dispose];
    
-   // xcode: ARC forbids explicit message send of 'dealloc'
-   //[super dealloc];
+   [super dealloc];
 }
 
 - (void)dispose

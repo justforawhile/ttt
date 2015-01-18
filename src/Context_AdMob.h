@@ -107,8 +107,7 @@ DECLARE_ANE_FUNCTION (Ad, HideAd);
 + (int)validateGender:(int)g;
 + (int)getRequestGenderByGender:(int)gender;
 
-//@property(nonatomic, assign, readonly) NSMutableSet* testDeviceIDs;
-@property(nonatomic, strong, readonly) NSMutableSet* testDeviceIDs;
+@property(nonatomic, assign, readonly) NSMutableSet* testDeviceIDs;
 @property(nonatomic, assign, readonly, getter=isTagForChildDirectedTreatment) BOOL tagForChildDirectedTreatment;
 @property(nonatomic, assign, readonly) int gender;
 @property(nonatomic, assign, readonly) NSDate* birthday;
