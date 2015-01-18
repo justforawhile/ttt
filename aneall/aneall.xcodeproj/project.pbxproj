@@ -13,6 +13,7 @@
 		338FA9231A6C44C9009B328F /* Context.m in Sources */ = {isa = PBXBuildFile; fileRef = 338FA91D1A6C44C9009B328F /* Context.m */; };
 		338FA9241A6C44C9009B328F /* Context_AdMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 338FA91F1A6C44C9009B328F /* Context_AdMob.m */; };
 		338FA9251A6C44C9009B328F /* Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 338FA9201A6C44C9009B328F /* Extension.m */; };
+		338FAA911A6C4FC1009B328F /* libGoogleAdMobAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 338FAA901A6C4FC1009B328F /* libGoogleAdMobAds.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		338FA9E71A6C44D9009B328F /* GADRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequest.h; sourceTree = "<group>"; };
 		338FA9E81A6C44D9009B328F /* GADRequestError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADRequestError.h; sourceTree = "<group>"; };
 		338FA9EA1A6C44D9009B328F /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		338FAA901A6C4FC1009B328F /* libGoogleAdMobAds.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAdMobAds.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				338FAA911A6C4FC1009B328F /* libGoogleAdMobAds.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +158,7 @@
 		338FA9291A6C44D9009B328F /* googlemobileadssdk */ = {
 			isa = PBXGroup;
 			children = (
+				338FAA901A6C4FC1009B328F /* libGoogleAdMobAds.a */,
 				338FA92A1A6C44D9009B328F /* Add-ons */,
 				338FA9DD1A6C44D9009B328F /* GADAdMobExtras.h */,
 				338FA9DE1A6C44D9009B328F /* GADAdNetworkExtras.h */,
