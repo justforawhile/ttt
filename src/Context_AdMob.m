@@ -961,9 +961,9 @@ UIView* findStageView (UIView* view)
          {
             stageViewController = (UIViewController*)responder;
             break;
-            
-            view = [view superview];
          }
+          
+         view = [view superview];
       }
    }
    

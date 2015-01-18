@@ -22,7 +22,8 @@
 
 @property(nonatomic, assign, readonly) NSNumber* key;
 @property(nonatomic, assign, readonly) Context_AdMob *context;
-@property(nonatomic, assign, readwrite) AdMob_Listener *adListener;
+//@property(nonatomic, assign, readwrite) AdMob_Listener *adListener;
+@property(nonatomic, strong, readwrite) AdMob_Listener *adListener;
 
 - (id)initWithKeyAndContext:(NSNumber*)adkey admobContext:(Context_AdMob*)adcontext type:(int)t unitID:(NSString *)unitid;
 
