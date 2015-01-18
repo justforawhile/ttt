@@ -153,7 +153,8 @@
       adView.rootViewController = nil;
       
       // for obj-c, maybe calling one of the following two is ok.
-      [adView release];
+      //  xcode: ARC forbids explicit message send of 'dealloc'
+      //[adView release];
       adView = nil;
    }
    //<<
@@ -161,7 +162,8 @@
    //>> java version has no this part (also no need for obj-c now, for self.adListener is a weak reference now)
    if (self.adListener != nil)
    {
-      [self.adListener release];
+       //  xcode: ARC forbids explicit message send of 'dealloc'
+       //[self.adListener release];
       self.adListener = nil;
    }
    //<<
@@ -199,7 +201,8 @@
       //>> java version has no this part (also no need for obj-c now, for self.adListener is a weak reference now)
       if (self.adListener != nil)
       {
-         [self.adListener release];
+          //  xcode: ARC forbids explicit message send of 'dealloc'
+          //[self.adListener release];
          self.adListener = nil;
       }
       //<<
@@ -424,22 +427,25 @@
       {
          [viewController.view removeFromSuperview];
       }
-      
-      [viewController release];
+       
+       //  xcode: ARC forbids explicit message send of 'dealloc'
+       //[viewController release];
       viewController = nil;
    }
    
    if (self.adListener != nil)
    {
-      [self.adListener release];
+       //  xcode: ARC forbids explicit message send of 'dealloc'
+       //[self.adListener release];
       self.adListener = nil;
    }
    
    if (interstitial != nil)
    {  
-      interstitial.delegate = nil;
-      
-      [interstitial release];
+       interstitial.delegate = nil;
+       
+       //  xcode: ARC forbids explicit message send of 'dealloc'
+      //[interstitial release];
       interstitial = nil;
    }
    

@@ -37,8 +37,9 @@ long long GetCurrentMillisSeconds ()
 
 - (void)dealloc {
    [self dispose];
-   
-  [super dealloc];
+
+  // xcode: arc restrictions: arc forbids explicit message send of dealloc
+  //[super dealloc];
 }
 
 - (id)initWithProperties:(NSString *)p type:(int)t unitID:(NSString *)unitid;

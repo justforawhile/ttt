@@ -27,7 +27,8 @@ void PhyardAneAll_ContextFinalizer (FREContext ctx) {
    {
       [context setFreContext:NULL];
       [context dispose];
-      [context release];
+      // xcode: ARC forbids explicit message send of 'dealloc'
+      //[context release];
    }
    
    FRESetContextNativeData (ctx, NULL);

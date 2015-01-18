@@ -79,7 +79,7 @@ void Context_AdMob_Initialize (void *extData, FREContext ctx, uint32_t *numFunct
    
    Context_AdMob* context = [[Context_AdMob alloc] init]; // <=> [Context_AdMob new]
    [context setFreContext:ctx];
-   FRESetContextNativeData (ctx, context);
+   FRESetContextNativeData (ctx, (__bridge void *)(context));
 }
 
 Context_AdMob* GetAdMobContextFromFREContext (FREContext ctx)
@@ -712,7 +712,8 @@ DECLARE_ANE_FUNCTION (Ad, HideAd)
    if (_testDeviceIDs != nil)
    {
       [_testDeviceIDs removeAllObjects];
-      [_testDeviceIDs release];
+      //  xcode: ARC forbids explicit message send of 'dealloc'
+      //[_testDeviceIDs release];
       _testDeviceIDs = nil;
    }
    
@@ -721,7 +722,8 @@ DECLARE_ANE_FUNCTION (Ad, HideAd)
    if (allAds != nil)
    {
       [allAds removeAllObjects];
-      [allAds release];
+      //  xcode: ARC forbids explicit message send of 'dealloc'
+      //[allAds release];
       allAds = nil;
    }
    
@@ -733,8 +735,9 @@ DECLARE_ANE_FUNCTION (Ad, HideAd)
       {
          [bannderAdContainer.view removeFromSuperview];
       }
-      
-      [bannderAdContainer release];
+       
+      //  xcode: ARC forbids explicit message send of 'dealloc'
+      //[bannderAdContainer release];
       bannderAdContainer = nil;
    }
    
@@ -840,8 +843,8 @@ DECLARE_ANE_FUNCTION (Ad, HideAd)
    } else {
       ad = [[Ad_AdMobBanner alloc] initWithKeyAndContext:key admobContext:self type:type unitID:unitID];
    }
-   
-   [ad autorelease];
+   //  xcode: ARC forbids explicit message send of 'dealloc'
+   //[ad autorelease];
    
    [allAds setObject:ad forKey:key];
    
