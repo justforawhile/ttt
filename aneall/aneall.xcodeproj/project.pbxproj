@@ -414,6 +414,7 @@
 		338FA9121A6C4467009B328F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/user1854/Downloads/ttt/ttt/deps/googlemobileadssdk,
@@ -429,6 +430,7 @@
 		338FA9131A6C4467009B328F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/user1854/Downloads/ttt/ttt/deps/googlemobileadssdk,
