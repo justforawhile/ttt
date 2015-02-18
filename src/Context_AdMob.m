@@ -113,12 +113,15 @@ DECLARE_ANE_FUNCTION (AdManager, SetAdGlobalOptions)
       
       NSString* deviceIDs = [NSString stringWithUTF8String:testDeviceIDs];
       
+      if (0)
+      {
       uint tagForCDT = FREObject_ExtractBoolean (argv [1]);
       
       int gender = FREObject_ExtractInt32 (argv[2]);
       
       Context_AdMob* admobContext = GetAdMobContextFromFREContext (ctx);
       [admobContext setOptions:deviceIDs tagForCDT:tagForCDT gender:gender];
+      }
    }
    @catch (NSException *exception) {
       result = FREObject_CreateError ((char *) [[exception name] UTF8String]);
