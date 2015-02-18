@@ -92,7 +92,9 @@ DECLARE_ANE_FUNCTION (Ad, HideAd);
 @interface Context_AdMob : Context {
    int nextAdId; // <= 0 means invalid
    NSMutableDictionary* allAds;
+   /*
    AdMob_ViewController* bannderAdContainer;
+   */
    
    UIView* stageView; // ios only
    UIViewController* stageViewController; // ios only
@@ -131,8 +133,8 @@ DECLARE_ANE_FUNCTION (Ad, HideAd);
 - (UIView*)getStageView; // ios only
 - (UIViewController*)getStageViewController; // ios only
 - (void)setAppWindowPadding:(double)left top:(double)top right:(double)right bottom:(double)bottom;
-- (AdMob_ViewController*)getBannderAdContainer;
-- (void)updateBannderAdContainer;
+//- (AdMob_ViewController*)getBannderAdContainer;
+//- (void)updateBannderAdContainer;
 
 @end
 

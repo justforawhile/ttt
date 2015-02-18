@@ -692,7 +692,9 @@ DECLARE_ANE_FUNCTION (Ad, HideAd)
    if (self != nil) {
       nextAdId = 1;
       allAds = [[NSMutableDictionary alloc] initWithCapacity:8];
+      /*
       bannderAdContainer = nil;
+      */
       
       stageView = nil;
       stageViewController = nil;
@@ -730,7 +732,7 @@ DECLARE_ANE_FUNCTION (Ad, HideAd)
    }
    
    // ...
-   
+   /*
    if (bannderAdContainer != nil)
    {
       if ([bannderAdContainer.view superview] != nil)
@@ -741,6 +743,7 @@ DECLARE_ANE_FUNCTION (Ad, HideAd)
       [bannderAdContainer release];
       bannderAdContainer = nil;
    }
+   */
    
    // ...
    
@@ -783,10 +786,14 @@ DECLARE_ANE_FUNCTION (Ad, HideAd)
       for (id deviceID in deviceIDs)
       {
          NSString* device = (NSString*)deviceID;
-         device = [device stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-         if ([device length] > 0)
+         if (device != nil)
          {
-            [_testDeviceIDs addObject:device];
+            device = [device stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            // must be a 32-length hash string, https://developers.google.com/mobile-ads-sdk/docs/admob/ios/targeting#test_ads
+            if ([device length] == 32) // if ([device length] > 0)
+            {
+               [_testDeviceIDs addObject:device];
+            }
          }
       }
 
@@ -986,6 +993,7 @@ UIView* findStageView (UIView* view)
    stage.frame = CGRectMake (left, top, superbounds.size.width - left - right, superbounds.size.height - top - bottom);
 }
 
+/*
 - (AdMob_ViewController*)getBannderAdContainer
 {
    if (bannderAdContainer == nil)
@@ -997,14 +1005,16 @@ UIView* findStageView (UIView* view)
    {  
       [[[[UIApplication sharedApplication] delegate] window] addSubview:bannderAdContainer.view];
       //[[[[UIApplication sharedApplication] delegate] window] bringSubviewToFront:bannderAdContainer.view];
-      [[[[UIApplication sharedApplication] delegate] window] sendSubviewToBack:bannderAdContainer.view];
+      //[[[[UIApplication sharedApplication] delegate] window] sendSubviewToBack:bannderAdContainer.view]; // ads will be convered
       bannderAdContainer.view.userInteractionEnabled = NO;
       bannderAdContainer.view.hidden = YES;
    }
    
    return bannderAdContainer;
 }
+*/
 
+/*
 - (void)updateBannderAdContainer
 {
    if (bannderAdContainer != nil)
@@ -1038,5 +1048,6 @@ UIView* findStageView (UIView* view)
       }
    }
 }
+*/
  
 @end

@@ -158,6 +158,17 @@
    }
    //<<
    
+   if (viewController != nil)
+   {
+      if ([viewController.view superview] != nil)
+      {
+         [viewController.view removeFromSuperview];
+      }
+      
+      [viewController release];
+      viewController = nil;
+   }
+   
    //>> java version has no this part (also no need for obj-c now, for self.adListener is a weak reference now)
    if (self.adListener != nil)
    {
@@ -208,10 +219,18 @@
       adView.delegate = self.adListener;
 
       adView.hidden = true;
+      /*
       AdMob_ViewController* bannerContainer = [self.context getBannderAdContainer];
       adView.rootViewController = bannerContainer;
       [bannerContainer.view addSubview:adView];
       //[bannerContainer.view bringSubviewToFront:adView];
+      */
+      viewController = [[AdMob_ViewController alloc] initWithContext:self.context];
+      [[[[UIApplication sharedApplication] delegate] window] addSubview:viewController.view];
+      viewController.view.userInteractionEnabled = NO;
+      viewController.view.hidden = YES;
+      adView.rootViewController = viewController;
+      [viewController.view addSubview:adView];
       
       [self updatePosition];
    }
@@ -223,7 +242,7 @@
 
 - (void)updatePosition
 {
-   if (adView != nil)
+   if (adView != nil && viewController != nil)
    {
       double windowBounds [4];
       [Context_AdMob getWindowBounds:windowBounds];
@@ -280,8 +299,12 @@
          ady /= [[UIScreen mainScreen] scale]; // ios only (as3 inputs are pixels)
       }
       
+      viewController.view.frame = CGRectMake(adx, ady, adWidth, adHeight);
+      /*
       adView.frame = CGRectMake(adx, ady, adWidth, adHeight);
-      adView.bounds = CGRectMake(0, 0, adWidth, adHeight);
+      */
+      adView.frame = CGRectMake (0, 0, adWidth, adHeight);
+      adView.bounds = CGRectMake (0, 0, adWidth, adHeight);
    }
 }
 
@@ -319,13 +342,22 @@
       [self prepare];
       return;
    }
-
+   
+   //>> java version has no this
+   if (viewController == nil)
+      return;
+   //<<
+   
    if ([self isReady])
    {
       if (! [self isVisible])
       {
          adView.hidden = NO;
+         /*
          [self.context updateBannderAdContainer];
+         */
+         viewController.view.userInteractionEnabled = YES;
+         viewController.view.hidden = NO;
          
          //>> padding (todo, to find the AIR main view then change its frame)
          /*
@@ -363,7 +395,15 @@
    if (adView != nil)
    {
       adView.hidden = YES;
+      /*
       [self.context updateBannderAdContainer];
+      */
+   }
+   
+   if (viewController != nil)
+   {
+      viewController.view.userInteractionEnabled = NO;
+      viewController.view.hidden = YES;
    }
    
    showOnReady = NO;
@@ -404,6 +444,7 @@
       
       [[[[UIApplication sharedApplication] delegate] window] addSubview:viewController.view];
       viewController.view.userInteractionEnabled = NO;
+      viewController.view.hidden = YES;
    }
    
    if (interstitial == nil)
@@ -569,6 +610,7 @@
    
    if ([self isReady]) {
       interstitialInShowing = interstitial;
+      viewController.view.hidden = NO;
       viewController.view.userInteractionEnabled = YES;
       [interstitialInShowing presentFromRootViewController:viewController];
    }

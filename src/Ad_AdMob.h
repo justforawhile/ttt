@@ -15,6 +15,8 @@
 @class Context_AdMob;
 
 @class AdMob_Listener;
+
+@class AdMob_ViewController;
       
 //=========================== Ad_AdMob
 
@@ -46,6 +48,11 @@
    const GADAdSize* adSize;
    
    BOOL showOnReady;
+   
+   // it looks one AdMob_ViewController in Context_AdMob for all banner ads is not a good idea on iOS.
+   //>> java version has no this
+   AdMob_ViewController* viewController;
+   //<<
 }
 
 @end
