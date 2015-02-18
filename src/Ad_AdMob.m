@@ -211,7 +211,7 @@
       AdMob_ViewController* bannerContainer = [self.context getBannderAdContainer];
       adView.rootViewController = bannerContainer;
       [bannerContainer.view addSubview:adView];
-      [bannerContainer.view bringSubviewToFront:adView];
+      //[bannerContainer.view bringSubviewToFront:adView];
       
       [self updatePosition];
    }

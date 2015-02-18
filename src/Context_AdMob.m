@@ -996,7 +996,7 @@ UIView* findStageView (UIView* view)
    if ([bannderAdContainer.view superview] == nil)
    {  
       [[[[UIApplication sharedApplication] delegate] window] addSubview:bannderAdContainer.view];
-      [[[[UIApplication sharedApplication] delegate] window] bringSubviewToFront:bannderAdContainer.view];
+      //[[[[UIApplication sharedApplication] delegate] window] bringSubviewToFront:bannderAdContainer.view];
       bannderAdContainer.view.userInteractionEnabled = NO;
       bannderAdContainer.view.hidden = YES;
    }
