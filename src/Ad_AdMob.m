@@ -289,9 +289,9 @@
       }
       
       if (((int)posY) == Position_CenterOrMiddle)
-         ady = 0.5 * (windowHeight - adHeight);
+         ady = 0.5 * (windowHeight - adHeight + windowBounds [1]);
       else if (((int)posY) == Position_LeftOrTop) // || ((int)posY) == Position_Sibling_Top)
-         ady = 0;
+         ady = 0 + windowBounds [1];
       else if (((int)posY) == Position_RightOrBottom) // || ((int)posY) == Position_Sibling_Bottom)
          ady = windowHeight - adHeight;
       else {
@@ -299,14 +299,14 @@
          ady /= [[UIScreen mainScreen] scale]; // ios only (as3 inputs are pixels)
       }
       
-      //viewController.view.frame = CGRectMake (adx, ady, adWidth, adHeight);
-      viewController.view.frame = CGRectMake (0, 0, adWidth, adHeight);
+      viewController.view.frame = CGRectMake (adx, ady, adWidth, adHeight);
+      //viewController.view.frame = CGRectMake (0, 0, adWidth, adHeight);
       viewController.view.bounds = CGRectMake (0, 0, adWidth, adHeight);
       /*
       adView.frame = CGRectMake (adx, ady, adWidth, adHeight);
       */
-      //adView.frame = CGRectMake (0, 0, adWidth, adHeight);
-      adView.frame = CGRectMake (adx, ady, adWidth, adHeight);
+      adView.frame = CGRectMake (0, 0, adWidth, adHeight);
+      //adView.frame = CGRectMake (adx, ady, adWidth, adHeight);
       adView.bounds = CGRectMake (0, 0, adWidth, adHeight);
    }
 }
