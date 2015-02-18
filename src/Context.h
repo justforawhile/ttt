@@ -30,7 +30,7 @@ void ThrowExceptionByFREResult (FREResult errorResult);
 uint        FREObject_ExtractBoolean (FREObject object);
 int         FREObject_ExtractInt32 (FREObject object);
 double      FREObject_ExtractDouble (FREObject object);
-const char* FREObject_ExtractString (FREObject object, int* length); // length as input for max length, as output for extracted string length.
+int FREObject_ExtractString (FREObject object, char *returnChars, int maxLength); // length as input for max length, as output for extracted string length.
 
 //FREObject FREObject_CreateError (const char* message, int id);
 FREObject FREObject_CreateError (const char* message);

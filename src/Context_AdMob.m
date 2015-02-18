@@ -107,8 +107,10 @@ DECLARE_ANE_FUNCTION (AdManager, SetAdGlobalOptions)
       //   return FREObject_CreateError ((char *) "TOO_FEW_ARGUMENTS");
       //}
       
-      int str_len;
-      const char* testDeviceIDs = FREObject_ExtractString (argv [0], &str_len);
+      char testDeviceIDs [1024];
+      int str_len = FREObject_ExtractString (argv [0], testDeviceIDs, 1024);
+      testDeviceIDs [str_len] = '\0'; // not essential
+      
       NSString* deviceIDs = [NSString stringWithUTF8String:testDeviceIDs];
       
       uint tagForCDT = FREObject_ExtractBoolean (argv [1]);
@@ -219,8 +221,10 @@ DECLARE_ANE_FUNCTION (Ad, CreateAd)
    @try {
       int type = FREObject_ExtractInt32 (argv[0]);
       
-      int str_len;
-      const char* admobUnitId = FREObject_ExtractString (argv [1], &str_len);
+      char admobUnitId [100];
+      int str_len = FREObject_ExtractString (argv [1], admobUnitId, 100);
+      admobUnitId [str_len] = '\0'; // not essential
+      
       NSString* unitID = [NSString stringWithUTF8String:admobUnitId];
       
       Context_AdMob* admobContext = GetAdMobContextFromFREContext (ctx);
@@ -992,6 +996,7 @@ UIView* findStageView (UIView* view)
    if ([bannderAdContainer.view superview] == nil)
    {  
       [[[[UIApplication sharedApplication] delegate] window] addSubview:bannderAdContainer.view];
+      [[[[UIApplication sharedApplication] delegate] window] bringSubviewToFront:bannderAdContainer.view];
       bannderAdContainer.view.userInteractionEnabled = NO;
       bannderAdContainer.view.hidden = YES;
    }
@@ -1020,6 +1025,15 @@ UIView* findStageView (UIView* view)
       if (hidden != bannderAdContainer.view.hidden)
       {
          bannderAdContainer.view.hidden = hidden;
+         
+         if (hidden == NO)
+         {
+            bannderAdContainer.view.userInteractionEnabled = YES;
+         }
+         else
+         {
+            bannderAdContainer.view.userInteractionEnabled = NO;
+         }
       }
    }
 }

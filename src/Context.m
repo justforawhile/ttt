@@ -97,23 +97,22 @@ double FREObject_ExtractDouble (FREObject object)
    return value;
 }
 
-// length as input for max length, as output for extracted string length.
-// the returned char* should be copied to other variable immediately (before calling other FRE apis).
-const char* FREObject_ExtractString (FREObject object, int* length)
+int FREObject_ExtractString (FREObject object, char *returnChars, int maxLength)
 {
    uint32_t str_len;
    const uint8_t *str;
 
-   FREResult result = FREGetObjectAsUTF8(object, &str_len, &str);
+   FREResult result = FREGetObjectAsUTF8(object, &str_len, &str); // str_len includes the null terminator
    
-   if (str_len > *length)
+   if (str_len > maxLength)
    {
       NSException *exception = [NSException exceptionWithName:@"INOUT_STRING_TOO_LONG" reason:@"" userInfo:NULL];
       @throw exception;
    }
    
-   *length = str_len;
-   return (const char*)str;
+   strncpy (returnChars, (const char*)str, str_len);
+   
+   return str_len;
 }
 
 //FREObject FREObject_CreateError (const char* message, int id)
