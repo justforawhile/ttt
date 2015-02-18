@@ -301,6 +301,7 @@
       
       //viewController.view.frame = CGRectMake (adx, ady, adWidth, adHeight);
       viewController.view.frame = CGRectMake (0, 0, adWidth, adHeight);
+      viewController.view.bounds = CGRectMake (0, 0, adWidth, adHeight);
       /*
       adView.frame = CGRectMake (adx, ady, adWidth, adHeight);
       */

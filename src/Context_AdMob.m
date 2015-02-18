@@ -111,10 +111,10 @@ DECLARE_ANE_FUNCTION (AdManager, SetAdGlobalOptions)
       int str_len = FREObject_ExtractString (argv [0], testDeviceIDs, 1024);
       testDeviceIDs [str_len] = '\0'; // not essential
       
-      NSString* deviceIDs = [NSString stringWithUTF8String:testDeviceIDs];
-      
       if (0)
       {
+      NSString* deviceIDs = [NSString stringWithUTF8String:testDeviceIDs];
+      
       uint tagForCDT = FREObject_ExtractBoolean (argv [1]);
       
       int gender = FREObject_ExtractInt32 (argv[2]);
