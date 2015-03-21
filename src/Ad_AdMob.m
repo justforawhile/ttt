@@ -300,14 +300,9 @@
       }
       
       viewController.view.frame = CGRectMake (adx, ady, adWidth, adHeight);
-      //viewController.view.frame = CGRectMake (0, 0, adWidth, adHeight);
-      viewController.view.bounds = CGRectMake (0, 0, adWidth, adHeight);
-      /*
-      adView.frame = CGRectMake (adx, ady, adWidth, adHeight);
-      */
-      adView.frame = CGRectMake (0, 0, adWidth, adHeight);
-      //adView.frame = CGRectMake (adx, ady, adWidth, adHeight);
-      adView.bounds = CGRectMake (0, 0, adWidth, adHeight);
+      //viewController.view.bounds = CGRectMake (0, 0, adWidth, adHeight);
+      //adView.frame = CGRectMake (0, 0, adWidth, adHeight);
+      //adView.bounds = CGRectMake (0, 0, adWidth, adHeight);
    }
 }
 
@@ -809,20 +804,26 @@
    return self;
 }
 
+/*
 -(BOOL)shouldAutorotate
 {
     return [[adMobContext getStageViewController] shouldAutorotate];
 }
+*/
 
+/*
 -(NSUInteger)supportedInterfaceOrientations
 {
     return [[adMobContext getStageViewController] supportedInterfaceOrientations];
 }
+*/
 
+/*
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
 {
     return [[adMobContext getStageViewController] preferredInterfaceOrientationForPresentation];
 }
+*/
 
 // todo: add orientation change notifications
 // [adMobContext onOrientationChangaed] // to notify all banner ads to reposition.
